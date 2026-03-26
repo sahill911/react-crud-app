@@ -1,14 +1,17 @@
-import { useState } from "react";
+import TaskForm from "./components/TaskForm";
 
 function App(){
 
-  const [tasks,setTasks] = useState([]);
+ const [tasks,setTasks] = useState([]);
 
-  return (
-    <div>
-      <h1>CRUD App</h1>
-    </div>
-  );
+ function addTask(task){
+  setTasks([...tasks, {id: Date.now(), text: task}]);
+ }
+
+ return (
+  <div>
+    <h1>CRUD App</h1>
+    <TaskForm addTask={addTask}/>
+  </div>
+ );
 }
-
-export default App;
